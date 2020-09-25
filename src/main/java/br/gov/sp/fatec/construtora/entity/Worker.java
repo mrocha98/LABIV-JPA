@@ -16,8 +16,8 @@ import java.util.Set;
 @PrimaryKeyJoinColumn(name = "wrk_id")
 public class Worker extends User {
 
-    public Worker(String name, String password, Date admissionDate) {
-        super(name, password, admissionDate);
+    public Worker(String cpf, String name, String password, Date admissionDate) {
+        super(cpf, name, password, admissionDate);
     }
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "workers")

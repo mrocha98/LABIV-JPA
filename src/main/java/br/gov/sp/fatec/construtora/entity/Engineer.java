@@ -16,8 +16,8 @@ import java.util.Set;
 @PrimaryKeyJoinColumn(name = "eng_id")
 public class Engineer extends User {
 
-    public Engineer(String name, String password, Date admissionDate, String crea) {
-        super(name, password, admissionDate);
+    public Engineer(String cpf, String name, String password, Date admissionDate, String crea) {
+        super(cpf, name, password, admissionDate);
         this.setCrea(crea);
     }
 

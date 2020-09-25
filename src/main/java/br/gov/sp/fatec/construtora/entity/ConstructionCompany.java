@@ -16,8 +16,8 @@ import java.util.Set;
 @NoArgsConstructor
 @DiscriminatorValue("construction")
 public class ConstructionCompany extends Company {
-    public ConstructionCompany (String cpf, String name) {
-        super(cpf, name);
+    public ConstructionCompany (String cnpj, String name) {
+        super(cnpj, name);
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "constructionCompanyOwner")

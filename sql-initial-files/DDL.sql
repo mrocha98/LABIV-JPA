@@ -47,18 +47,18 @@ create table bld_building
 
 create table bpe_building_per_engineer
 (
-    bpe_id          bigint unsigned primary key,
     bld_building_id bigint unsigned not null,
     eng_engineer_id bigint unsigned not null,
+    primary key (bld_building_id, eng_engineer_id),
     constraint bpe_bld_fk foreign key (bld_building_id) references bld_building (bld_id),
     constraint bpe_eng_fk foreign key (eng_engineer_id) references eng_engineer (eng_id)
 );
 
 create table bpw_building_per_worker
 (
-    bpw_id          bigint unsigned primary key,
     bld_building_id bigint unsigned not null,
     eng_engineer_id bigint unsigned not null,
+    primary key (bld_building_id, eng_engineer_id),
     constraint bpw_bld_fk foreign key (bld_building_id) references bld_building (bld_id),
     constraint bpw_eng_fk foreign key (eng_engineer_id) references eng_engineer (eng_id)
 );
