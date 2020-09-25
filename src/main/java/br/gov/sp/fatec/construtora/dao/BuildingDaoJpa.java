@@ -75,10 +75,10 @@ public class BuildingDaoJpa implements BuildingDao {
 
     @Override
     public List<Building> filter(Integer floors, String constructionCompanyCnpj) {
-        String jpql = "select b from Building b inner join ConstructionCompany c on c.cnpj = :constructionCompanyCnpj and b.floors = :floors";
+        String jpql = "select b from Building b inner join b.constructionCompanyOwner c where c.cnpj = :cnpj and b.floors = :floors";
 
         TypedQuery<Building> query = entityManager.createQuery(jpql, Building.class);
-        query.setParameter("constructionCompanyCnpj", constructionCompanyCnpj);
+        query.setParameter("cnpj", constructionCompanyCnpj);
         query.setParameter("floors", floors);
         return query.getResultList();
     }
