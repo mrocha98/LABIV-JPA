@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+
+    db:
+        image: mariadb:10.5.5
+        container_name: lab4-construtora-mariadb
+        restart: unless-stopped
+        volumes:
+            - ./sql-initial-files:/docker-entrypoint-initdb.d
+        environment:
+            - MYSQL_ROOT_PASSWORD=adm
+            - MYSQL_DATABASE=construtora
+            - MYSQL_USER=matheus
+            - MYSQL_PASSWORD=bd123
+            - MYSQL_INITDB_SKIP_TZINFO=1
+            - MYSQL_TCP_PORT=3306
+        ports:
+            - 3307:3306
+        logging:
+            driver: "json-file"
+            options:
+                max-file: "4"
+                max-size: "5m"
+
+    adminer:
+        image: adminer
+        container_name: lab4-construtora-adminer
+        restart: unless-stopped
+        ports:
+            - 8080:8080
+        logging:
+            driver: "json-file"
+            options:
+                max-file: "1"
+                max-size: "5m"
